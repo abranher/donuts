@@ -7,7 +7,7 @@ _Proyecto E-commerce para una tienda de donas_
 1. Clonar proyecto:
 
 ```bash
-  git clone https://github.com/abranher/donuts-maker.git
+  git clone https://github.com/abranher/donuts.git
 ```
 
 ### Pre-requisitos 📋
