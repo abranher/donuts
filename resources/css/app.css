@@ -1,0 +1,222 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  font-family: 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+/* la clase btn solo funciona con elementos html <button> no se agreganlos estilos si es una etiqueata <a> */
+@layer components {
+  .btn-primary {
+    @apply m-2 whitespace-nowrap py-3.5 px-6 text-lg font-medium text-white active:text-zinc-200 bg-violet-600 rounded-lg active:bg-violet-800 focus:outline-none;
+  }
+  .btn-primary-sm {
+    @apply m-2 whitespace-nowrap py-2 px-3 text-lg font-medium text-white active:text-zinc-200 bg-violet-600 rounded-lg active:bg-violet-800 focus:outline-none;
+  }
+  .btn-success-sm {
+    @apply m-2 whitespace-nowrap py-2 px-3 text-lg font-medium text-white active:text-zinc-200 bg-green-600 rounded-lg active:bg-green-800 focus:outline-none;
+  }
+  .btn-danger {
+    @apply m-2 inline-block whitespace-nowrap py-3.5 px-6 text-lg font-medium text-white active:text-zinc-200 rounded-lg focus:outline-none bg-red-600 active:bg-red-700;
+  }
+  .btn-secondary {
+    @apply m-2 w-56 sm:w-full inline-block whitespace-nowrap py-3.5 px-6 text-lg font-medium border border-violet-600 rounded-lg active:text-violet-500 active:bg-zinc-100 dark:active:bg-slate-800 bg-transparent text-violet-600 focus:outline-none;
+  }
+  .link-primary {
+    @apply text-base font-medium text-violet-600 hover:underline cursor-pointer dark:text-violet-600;
+  }
+  .link-secondary {
+    @apply text-base font-medium text-gray-600 hover:underline cursor-pointer dark:text-gray-600;
+  }
+  .btn-primary-rounded {
+    @apply py-3.5 px-6 font-medium text-xl whitespace-nowrap rounded-full bg-violet-600 text-white appearance-none inline-flex justify-center hover:shadow-2xl transition-all duration-200 hover:scale-105 items-center cursor-pointer;
+  }
+  .btn-secondary-rounded {
+    @apply py-3.5 px-6 font-medium text-xl whitespace-nowrap rounded-full border border-slate-300 text-slate-900 appearance-none inline-flex hover:shadow-2xl transition-all duration-200 hover:scale-105 items-center cursor-pointer;
+  }
+  .btn-remove-from-cart {
+    @apply py-3.5 px-6 font-medium text-xl rounded-full border-2 border-slate-300 text-rose-600 dark:text-rose-400 appearance-none inline-flex hover:shadow-2xl transition-all duration-200 hover:scale-105 items-center cursor-pointer;
+  }
+  .bg-dark {
+    @apply bg-gray-950;
+  }
+  .bg-dark-card {
+    @apply bg-gray-900;
+  }
+}
+
+@layer utilities {
+  .circle {
+  fill: none;
+  stroke: rgba(124, 58, 237, 0.781);
+  stroke-width: 14;
+  stroke-linecap: round;
+  transform: translate(5px, 5px);
+  stroke-dasharray: 110;
+  stroke-dashoffset: 98;
+  }
+}
+
+/* Custom styles */
+
+/* Custom DONUTS*/
+
+.donuts-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+}
+
+.donuts-image:nth-of-type(1) {
+  z-index: 1;
+}
+
+.donuts-image:nth-of-type(2) {
+  z-index: 2;
+}
+
+.donuts-image:nth-of-type(3) {
+  z-index: 3;
+}
+
+/* circulos de estadisticas */
+
+.conta {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.conta .car {
+  position: relative;
+  height: 250px;
+}
+
+.conta .car .percent {
+  position: relative;
+  width: 150px;
+  height: 150px;
+}
+
+.conta .car .percent svg {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  transform: rotate(270deg);
+}
+
+.percent svg circle {
+  width: 100%;
+  height: 100%;
+  fill: transparent;
+  stroke-width: 2;
+  transform: translate(5px, 5px);
+}
+
+.percent svg circle:nth-child(2) {
+  stroke: var(--clr);
+  stroke-dasharray: 440;
+  stroke-dashoffset: calc(440 - (440 * var(--num)) /100);
+  opacity: 0;
+  animation: fadeIn 1s linear forwards;
+  animation-delay: 2.5s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.dot {
+  position: absolute;
+  inset: 5px;
+  z-index: 10;
+  animation: animateDot 2s linear forwards;
+}
+
+@keyframes animateDot {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(calc(3.6deg * var(--num)));
+  }
+}
+
+.dot::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--clr);
+  box-shadow: 0 0 10px var(--clr),
+    0 0 30px var(--clr);
+}
+
+.number {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  opacity: 0;
+  animation: fadeIn 1s linear forwards;
+  animation-delay: 2.5s;
+}
+
+.number h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  font-size: 2.5em;
+}
+
+.number h2 span {
+  font-weight: 300;
+  font-size: .5em;
+}
+
+.number p {
+  font-weight: 300;
+  font-size: .75em;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .75);
+}
+
+/* la fecha del boton del inventario*/
+
+#angle-up {
+  transition: all .1s ease-out;
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+
+/**
+* esto es para leaflet
+*/
+
+.leaflet-container {
+  height: 650px;
+}
